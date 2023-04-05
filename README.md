@@ -10,12 +10,11 @@ npx vercel dev
 ```
 This starts both the Next.js application as well and gives you the ability to serve requests using the serverless functions in the top-level `api` directory.
 
-> In development, this approach does not seem to enable to the API handlers defined in `pages/api` in development. See the Workaround section for a solution.
+Once started, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+> Caveat: In development, this approach does not seem to enable to the API handlers defined in `pages/api` in development. See the "Accessing both `api` Directories in Development" section for a workaround.
 
 ## Using Next.js
-The following starts only the Next.js application only. 
-
-> In development this approach, does not give you access to the top-level `api` directory. See Workaround section for having access to both `api` directories.
 ```bash
 npm run dev
 ```
@@ -24,10 +23,18 @@ or
 yarn dev
 ```
 
-## Workaround: Accessing both API Directories 💡
-To access both `api` directories in development, I have added the following fallback rewrite to a separately running instance of the application to `next.config.js`.
+This starts the Next.js application only.
 
-The rewrite will take effect once you start two instances of the application with both methods above (with one running on port `3000`, and the other on `3001`.
+Similarly once started, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+> Caveat: This approach does not give you access to the top-level `api` directory. See the "Accessing both `api` Directories in Development" section for a workaround.
+
+
+
+## Accessing both `api` Directories in Development
+This is a workaround I have added to be able to access both `api` directories in development. It adds a fallback rewrite to a separately running instance of the application to `next.config.js`.
+
+The rewrite will take effect once you start two different of the application one running on port `3000` and started with the Next.js approach above, and the other on `3001` started with the Vercel CLI approach above.
 ```js
 {
   async rewrites() {
@@ -42,24 +49,23 @@ The rewrite will take effect once you start two instances of the application wit
   }
 }
 ```
-
-To use this workaround, from one terminal run the command in "Using Next.js" section, then in another, run the command from "Using Vercel CLI" section.
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is just one approach, and there may be better (recommended) ones that I have not found yet! Happy to find out what those are and apply them to this example.
 
 # API Routes and Server Functions (Typescript, Rust, Python Go)
 
 Four different API routes, or server functions have been added within the application:
-- `pages/api/typescript.ts`
-- `api/python.py`
-- `api/go.go`
-- `api/rust.rs`
+|Route|API Directory|
+|:---|:---|
+|`api/typescript`|`pages/api`|
+|`api/python`|Top-level `api`
+|`api/go`|Top-level `api`|
+|`api/rust`|Top-level `api`|
 
-The Typescript function, is placed normally inside the `pages/api` directory of the Next.js application, while the others are placed in the top level `api` folder.
+The Typescript api handler, is placed normally inside the `pages/api` directory of the Next.js application, while the others are placed in the top level `api` folder.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/typescript](http://localhost:3000/api/typescript). This endpoint can be edited in `pages/api/typescript.ts`.
+Both `api` directories are mapped to the `/api/*` route. Files in these directories are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-The `pages/api` and `api` directory is mapped to `/api/*` route. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+For more information on Vercel Serverless Functions see [Serverless Functions documentation](https://vercel.com/docs/concepts/functions/serverless-functions). And for more information on supported runtimes, see [Serverless Function Runtimes](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes).
 
 ## Deploy on Vercel
 
