@@ -29,13 +29,11 @@ const Home: NextPage = () => {
           <code className={styles.code}>api/python.py</code>
         </p>
 
+        <h1>API Routes</h1>
         <div className={styles.grid}>
           <Link href="/api/typescript" className={styles.card}>
             <h2>api/typescript &rarr;</h2>
-            <p>
-              Visit Typescript API endpoint (inside{" "}
-              <code className={styles.code}>pages/</code> directory).
-            </p>
+            <p>Visit Typescript API endpoint.</p>
           </Link>
 
           <Link href="/api/rust" className={styles.card}>
@@ -52,13 +50,23 @@ const Home: NextPage = () => {
             <h2>api/python &rarr;</h2>
             <p>Visit Python API endpoint.</p>
           </Link>
+        </div>
 
+        <h1>Links</h1>
+        <div className={styles.grid}>
+          <Link
+            href="https://github.com/RexfordEssilfie/vercel-api-languages"
+            className={styles.card}
+          >
+            <h2>Github &rarr;</h2>
+            <p>Go to the repository for this page on Github.</p>
+          </Link>
           <Link
             href="https://vercel.com/docs/concepts/functions/serverless-functions/quickstart"
             className={styles.card}
           >
             <h2>Learn More &rarr;</h2>
-            <p>Read more about how to use Vercel Serverless Functions.</p>
+            <p>Read on Vercel Serverless Functions.</p>
           </Link>
         </div>
       </main>
