@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -29,36 +30,36 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/api/typescript" className={styles.card}>
+          <Link href="/api/typescript" className={styles.card}>
             <h2>api/typescript &rarr;</h2>
             <p>
               Visit Typescript API endpoint (inside{" "}
               <code className={styles.code}>pages/</code> directory).
             </p>
-          </a>
+          </Link>
 
-          <a href="/api/rust" className={styles.card}>
+          <Link href="/api/rust" className={styles.card}>
             <h2>api/rust &rarr;</h2>
             <p>Visit Rust API endpoint.</p>
-          </a>
+          </Link>
 
-          <a href="/api/go" className={styles.card}>
+          <Link href="/api/go" className={styles.card}>
             <h2>api/go &rarr;</h2>
             <p>Visit Go API endpoint.</p>
-          </a>
+          </Link>
 
-          <a href="/api/python" className={styles.card}>
+          <Link href="/api/python" className={styles.card}>
             <h2>api/python &rarr;</h2>
             <p>Visit Python API endpoint.</p>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="https://vercel.com/docs/concepts/functions/serverless-functions/quickstart"
             className={styles.card}
           >
             <h2>Learn More &rarr;</h2>
             <p>Read more about how to use Vercel Serverless Functions.</p>
-          </a>
+          </Link>
         </div>
       </main>
 
