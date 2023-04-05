@@ -4,18 +4,18 @@ This repository showcases introducing multiple languages such as Python, Rust an
 
 # Getting Started
 
-## Using @vercel/cli
+## Using Vercel CLI
 ```bash
 npx vercel dev
 ```
 This starts both the Next.js application as well and gives you the ability to serve requests using the serverless functions in the top-level `api` directory.
 
-> Caveat: when serving the application this way locally, the API routes in `pages/api` seem not to be accessible. I have not identified a solution for this. To have them be accessible, in development, you have to fallback to the default way of starting Next.js applications in development below.
-> See workaround section for solution to this.
+> In development, this approach does not seem to enable to the API handlers defined in `pages/api` in development. See the Workaround section for a solution.
 
-## Using @next
-Use this to start the Next.js application in the normal way you would.
+## Using Next.js
+The following starts only the Next.js application only. 
 
+> In development this approach, does not give you access to the top-level `api` directory. See Workaround section for having access to both `api` directories.
 ```bash
 npm run dev
 ```
@@ -23,6 +23,27 @@ or
 ```bash
 yarn dev
 ```
+
+## Workaround: Accessing both API Directories 💡
+To access both `api` directories in development, I have added the following fallback rewrite to a separately running instance of the application to `next.config.js`.
+
+The rewrite will take effect once you start two instances of the application with both methods above (with one running on port `3000`, and the other on `3001`.
+```js
+{
+  async rewrites() {
+    return {
+      fallback: [
+        {
+          source: "/api/:path*",
+          destination: `http://localhost:3001/api/:path*`
+        }
+      ]
+    };
+  }
+}
+```
+
+To use this workaround, from one terminal run the command in "Using Next.js" section, then in another, run the command from "Using Vercel CLI" section.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
