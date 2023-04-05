@@ -1,0 +1,20 @@
+# --snip--
+
+[package]
+name = "vercel_api_languages"
+version = "1.0.0"
+edition = "2021"
+
+
+[dependencies]
+tokio = { version = "1", features = ["macros"] }
+serde_json = { version = "1", features = ["raw_value"] }
+# Documentation: https://docs.rs/vercel_runtime/latest/vercel_runtime
+vercel_runtime = { version = "0.2.1" }
+
+# Each handler has to be specified as [[bin]]
+[[bin]]
+name = "rust"
+path = "api/rust.rs"
+
+# --snip--
