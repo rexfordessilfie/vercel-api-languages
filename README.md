@@ -1,8 +1,9 @@
+# vercel-api-languages
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repository showcases introducing multiple languages such as Python, Rust and Go into a Next.js application.
 
 ## Getting Started
-
-First, run the development server:
+To start the Next.js application, run the development server:
 
 ```bash
 npm run dev
@@ -10,22 +11,29 @@ npm run dev
 yarn dev
 ```
 
+⚠️ The above will start the next app, which comes with all the `api` routes in the `pages/api` directory. Unfortunately, it does not also start up the serverless functions in the top level `api` directory, which contains our functions written in different languages.
+
+To start both the `Next.js` app alongside the Functions, run
+
+```bash
+npx vercel dev
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# API Routes and Server Functions
+
+Four different API routes, or server functions have been added within the application:
+- `pages/api/typescript.ts`
+- `api/python.py`
+- `api/go.go`
+-  `api/rust.rs`
+
+The Typescript function, is placed normally inside the `pages/api` directory of the Next.js application, while the others are placed in the top level `api` folder.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
