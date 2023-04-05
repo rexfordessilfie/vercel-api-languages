@@ -7,6 +7,6 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    data = { "message": "Hello from Python (api/python.py)", "date": datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+    data = { "message": "Hello from Python!", "date": datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
     self.wfile.write(str(data).encode())
     return

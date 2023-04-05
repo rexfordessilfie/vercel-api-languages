@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
@@ -14,41 +14,50 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to{" "}
+          <a href="https://github.com/RexfordEssilfie/vercel-api-languages">
+            vercel-api-languages!
+          </a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          Get started by editing{" "}
+          <code className={styles.code}>api/pages/typescript.ts</code>,
+          <code className={styles.code}>api/rust.rs</code>,
+          <code className={styles.code}>api/go.go</code>, or
+          <code className={styles.code}>api/python.py</code>
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
+          <a href="/api/typescript" className={styles.card}>
+            <h2>api/typescript &rarr;</h2>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              Visit Typescript API endpoint (inside{" "}
+              <code className={styles.code}>pages/</code> directory).
             </p>
+          </a>
+
+          <a href="/api/rust" className={styles.card}>
+            <h2>api/rust &rarr;</h2>
+            <p>Visit Rust API endpoint.</p>
+          </a>
+
+          <a href="/api/go" className={styles.card}>
+            <h2>api/go &rarr;</h2>
+            <p>Visit Go API endpoint.</p>
+          </a>
+
+          <a href="/api/python" className={styles.card}>
+            <h2>api/python &rarr;</h2>
+            <p>Visit Python API endpoint.</p>
+          </a>
+
+          <a
+            href="https://vercel.com/docs/concepts/functions/serverless-functions/quickstart"
+            className={styles.card}
+          >
+            <h2>Learn More &rarr;</h2>
+            <p>Read more about how to use Vercel Serverless Functions.</p>
           </a>
         </div>
       </main>
@@ -59,14 +68,14 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
